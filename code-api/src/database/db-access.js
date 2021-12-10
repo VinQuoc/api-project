@@ -10,7 +10,7 @@ const config = {
   timezone: "+07:00",
   underscored: true,
   dialectOptions: {
-    useUTC: true,
+    // useUTC: true,
     dateStrings: true,
     typeCast: true,
   },

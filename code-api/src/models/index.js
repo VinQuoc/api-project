@@ -8,6 +8,11 @@ const history = [
     []
 ]
 
+// const users = [
+//     ["id", "username", "password", "status"],
+//     ["id", "username", "password", "status"],
+// ]
+
 exports.models = {
     news_job,
     history,

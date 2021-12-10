@@ -5,30 +5,25 @@ exports.getColumns = (tableName, isCreate = true) => {
   const model = models[tableName];
   if (model) {
     ret = isCreate ? model[0] : model[1];
-  } else if (tableName === "user") {
+  } else if (tableName === "users") {
     if (isCreate) {
       ret = [
         "id",
         "username",
         "password",
         "status",
-        "email",
-        "phone",
-        "role_name",
-        "note",
-        "created_date",
-        "created_by",
+        // "email",
+        // "phone",
+        // "role_name",
       ];
     } else {
       ret = [
         "id",
+        "username",
         "status",
-        "email",
-        "phone",
-        "role_name",
-        "note",
-        "updated_date",
-        "updated_by",
+        // "email",
+        // "phone",
+        // "role_name",
       ];
     }
   } else if (tableName === "token") {

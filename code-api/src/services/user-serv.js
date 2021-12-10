@@ -1,13 +1,12 @@
 const _ = require("lodash");
 const generator = require('generate-password');
-const { basicAcs, userAcs } = require("../database");
-const { bcryptUtil, dateUtil } = require("../utils");
+const { basicAcs } = require("../database");
+const { bcryptUtil } = require("../utils");
 const { User } = require("../database/tablename-const");
 const basicServ = require("./basic-serv");
 
 module.exports = {
   getUserByAuth,
-  updateLatestLogin,
   createUser
 }
 
@@ -38,18 +37,7 @@ async function getUserByAuth(username, password) {
   };
 };
 
-async function updateLatestLogin(params) {
-  const latest_login = dateUtil.parse2Str();
-  const ret = await userAcs.updateLatestLogin({ ...params, latest_login });
-
-  if (ret.OK) {
-    return ret.data;
-  }
-
-  return null;
-};
-
-async function createUser(params, others) {
+async function createUser(params) {
   if (_.isEmpty(params)) {
     return []
   }
@@ -65,10 +53,10 @@ async function createUser(params, others) {
     return {
       ...rec,
       // password,
-      // status: "ACTIVE",//"FORCE_PASS",
+      status: "ACTIVE",
     }
   });
 
-  await basicServ.insert2("users", prs, others)
+  await basicServ.insert("users", prs)
   return prs
 }

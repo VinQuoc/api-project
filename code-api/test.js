@@ -4,7 +4,7 @@ const { Sequelize, QueryTypes } = require("sequelize");
 const config = {
     username: "root",
     password: "Abc1234%^&",
-    database: "viec_lam",
+    database: "blogdb",
     host: "127.0.0.1",
     dialect: "mysql",
     logging: false,
@@ -39,7 +39,11 @@ const db = new Sequelize(
 
 // code test kết nối và truy vấn dữ liệu lên mysql
 // thay đổi sql
-let sql = `SELECT * FROM nguoi_dung WHERE id = 2`;
+let sql = `
+    SELECT *
+    FROM users
+    WHERE username='zxc1'
+    `;
 
 const getById = async (sql) => {
     try {
