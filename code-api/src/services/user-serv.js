@@ -1,5 +1,4 @@
 const _ = require("lodash");
-const generator = require('generate-password');
 const { basicAcs } = require("../database");
 const { bcryptUtil } = require("../utils");
 const { User } = require("../database/tablename-const");
@@ -44,15 +43,8 @@ async function createUser(params) {
 
   const safeRecs = Array.isArray(params) ? params : [params]
   const prs = safeRecs.map(rec => {
-    // const password = generator.generate({
-    //   length: 12,
-    //   numbers: true,
-    //   symbols: true
-    // });
-
     return {
       ...rec,
-      // password,
       status: "ACTIVE",
     }
   });

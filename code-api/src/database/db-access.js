@@ -8,24 +8,11 @@ const config = {
   dialect: "mysql",
   logging: false,
   timezone: "+07:00",
-  underscored: true,
-  dialectOptions: {
-    // useUTC: true,
-    dateStrings: true,
-    typeCast: true,
-  },
-  define: {
-    freezeTableName: true,
-    timestamps: false,
-  },
   pool: {
     max: 50,
     min: 0,
     idle: 10000,
-    acquire: 60000,
-    evict: 10000,
     connectTimeout: 1000000,
-    handleDisconnects: false,
   },
 };
 

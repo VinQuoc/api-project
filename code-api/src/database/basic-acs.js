@@ -51,7 +51,7 @@ exports.insert = async (tableName, { columns, rows }) => {
             columns,
             rows: rowsSafe,
         });
-        const ret = await db.query(sql, { type: QueryTypes.SELECT });
+        const ret = await db.query(sql, { type: QueryTypes.INSERT });
 
         return createResult(ret);
     } catch (ex) {
@@ -72,7 +72,7 @@ exports.update = async (tableName, params) => {
                 row: data,
             });
         }).join(';');
-        const many = await db.query(sql, { type: QueryTypes.SELECT });
+        const many = await db.query(sql, { type: QueryTypes.UPDATE });
 
         return createResult(many);
     } catch (ex) {

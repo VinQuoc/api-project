@@ -11,7 +11,6 @@ const config = {
     timezone: "+07:00",
     underscored: true,
     dialectOptions: {
-        useUTC: true,
         dateStrings: true,
         typeCast: true,
     },
@@ -42,17 +41,27 @@ const db = new Sequelize(
 let sql = `
     SELECT *
     FROM users
-    WHERE username='zxc1'
+    WHERE username='zxc6'
     `;
+
+let sql3 = `
+INSERT INTO blogdb.users (id,username,password,status) 
+VALUES ('2fe66c32-d747-4885-ab71-8231e0dd33f2', 'zzz1', '$2b$10$CroglVCRzD0oGb3BGP7/9u2IJ4nXL7syS/wNOvd/nz2yh9x8eEgB6', 'ACTIVE');
+`;
+
+let sql2 = `
+    INSERT INTO users(id,username,password,status)
+    VALUES('52637a8c-d160-4551-be2b-2aefed8f0fe5','zxc09','$2b$10$xif0BthI1f/W4d.DF9FMFeWIX0/hCXYa/zr2Oxdq0w2KYvs7uJ9jy','ACTIVE');
+`;
 
 const getById = async (sql) => {
     try {
-        const ret = await db.query(sql, { type: QueryTypes.SELECT });
-        console.log(ret);
+        const ret = await db.query(sql, { type: QueryTypes.INSERT });
+        console.log('ret', ret);
     } catch (error) {
         console.log(error);
 
     }
 }
 
-getById(sql);
+getById(sql2);
